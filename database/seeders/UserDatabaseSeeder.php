@@ -2,15 +2,17 @@
 
 namespace Modules\User\Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use Modules\General\Contracts\Seeder\BaseSeeder;
 
-class UserDatabaseSeeder extends Seeder
+class UserDatabaseSeeder extends BaseSeeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function init(): void
     {
-        // $this->call([]);
+        //
+    }
+
+    public function fake(): void
+    {
+        //
     }
 }
