@@ -2,15 +2,14 @@
 
 namespace Modules\User\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Modules\General\Contracts\Trait\WithUuidColumn;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory, Notifiable, WithUuidColumn;
+    use Notifiable, WithUuidColumn;
 
     protected $guarded = [];
 
@@ -19,9 +18,12 @@ class User extends Model
         'remember_token',
     ];
 
+    protected $casts = [
+        'password' => 'hashed',
+    ];
+
     public function identifiers(): HasMany
     {
         return $this->hasMany(UserIdentifier::class);
     }
-
 }
