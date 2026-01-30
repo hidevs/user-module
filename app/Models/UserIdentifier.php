@@ -10,10 +10,13 @@ class UserIdentifier extends Model
 {
     protected $guarded = [];
 
-    protected $casts = [
-        'type' => EnumUserIdentifierType::class,
-        'verified_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'type' => EnumUserIdentifierType::class,
+            'verified_at' => 'datetime',
+        ];
+    }
 
     public function user(): BelongsTo
     {
